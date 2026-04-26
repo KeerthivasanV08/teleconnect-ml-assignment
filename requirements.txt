@@ -1,0 +1,29 @@
+# Core data handling
+pandas
+numpy
+
+# Visualization
+matplotlib
+seaborn
+
+# Machine Learning
+scikit-learn
+
+# Imbalanced learning (SMOTE, undersampling)
+imbalanced-learn
+
+# Model persistence
+joblib
+
+# Explainability
+shap
+
+# Jupyter Notebook
+notebook
+ipykernel
+
+# Optional but useful for clean warnings handling
+warnings
+
+# Advanced stats (used in regression metrics / analysis)
+scipy
