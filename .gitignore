@@ -1,6 +1,7 @@
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
-artifacts/*.pkl
+artifacts/
+!artifacts/scaler.pkl
 .env
 .DS_Store
