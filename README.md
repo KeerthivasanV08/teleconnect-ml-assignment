@@ -49,6 +49,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 ▶️ 4. How to Run the Project
+
 Option 1 — Run Notebooks (Recommended)
 notebooks/01_EDA.ipynb
 notebooks/02_Preprocessing.ipynb
@@ -64,6 +65,7 @@ python src/regression.py
 python src/interpretation.py
 
 📂 5. Project Structure
+
 teleconnect-ml-assignment/
 │
 ├── data/
@@ -193,6 +195,7 @@ Prioritize customers with:
 
 
 💰 8. ROI Analysis
+
 Assumptions:
 •	Retention cost = $50 
 •	Churn loss = $500 
@@ -208,6 +211,7 @@ Random targeting:
 Model provides ~6x better ROI than random selection.
 
 🧠 9. Tech Stack
+
 •	Python 
 •	Pandas, NumPy 
 •	Scikit-learn 
@@ -217,6 +221,7 @@ Model provides ~6x better ROI than random selection.
 •	Jupyter Notebook 
 
 🔀 10. Git Workflow
+
 Branch Strategy:
 •	feature/eda 
 •	feature/preprocessing 
@@ -230,6 +235,7 @@ Commit Style:
 •	refactor: code improvements 
 
 🏁 11. Final Outcome
+
 ✔ End-to-end ML pipeline
 ✔ Feature engineering + preprocessing
 ✔ Multiple ML model comparison
