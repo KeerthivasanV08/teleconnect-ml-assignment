@@ -3,5 +3,6 @@ __pycache__/
 *.pyc
 artifacts/*
 !artifacts/scaler.pkl
+!artifacts/classification_results.csv
 .env
 .DS_Store
