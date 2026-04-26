@@ -48,7 +48,7 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 
-▶️ 4. How to Run the Project
+## ▶️ 4. How to Run the Project
 
 Option 1 — Run Notebooks (Recommended)
 notebooks/01_EDA.ipynb
@@ -64,7 +64,7 @@ python src/classification.py
 python src/regression.py
 python src/interpretation.py
 
-📂 5. Project Structure
+## 📂 5. Project Structure
 
 teleconnect-ml-assignment/
 │
@@ -82,7 +82,7 @@ teleconnect-ml-assignment/
 ├── requirements.txt
 └── README.md
 
-📊 6. Pipeline Overview
+## 📊 6. Pipeline Overview
 
 1️⃣ Data Understanding & Cleaning (EDA)
 •	Missing value handling 
@@ -93,7 +93,7 @@ Key Insights:
 •	Month-to-month contracts → highest churn 
 •	High monthly charges → increased churn risk 
 •	Low tenure customers → more likely to churn 
-
+________________________________________
 
 2️⃣ Feature Engineering & Preprocessing
 Encoding:
@@ -110,9 +110,9 @@ Imbalance Handling:
 •	SMOTE 
 •	Random Undersampling 
 •	Class Weights 
+________________________________________
 
-
-3️⃣ Classification (Churn Prediction)
+## 3️⃣ Classification (Churn Prediction)
 Models Used:
 •	Logistic Regression 
 •	Decision Tree 
@@ -129,7 +129,7 @@ Outputs:
 •	Feature importance analysis 
 •	Best model selection 
 
-
+________________________________________
 4️⃣ Regression (Revenue Forecasting)
 Target: MonthlyCharges
 Models Used:
@@ -150,8 +150,7 @@ Evaluation:
 •	Actual vs Predicted plots 
 •	Residual analysis 
 •	Model comparison table 
-
-
+________________________________________
 5️⃣ Model Interpretation (Explainability)
 SHAP Analysis:
 •	Global feature importance 
@@ -166,9 +165,9 @@ Key Churn Drivers:
 •	Monthly charges 
 •	Tech support absence 
 •	Fiber optic usage 
+________________________________________
 
-
-📈 7. Business Insights
+## 📈 7. Business Insights
 
 1. Top churn drivers
 •	Month-to-month contracts 
@@ -180,21 +179,21 @@ Key Churn Drivers:
 2. High-risk customer segments
 •	New customers (< 6 months) 
 •	High-paying users without support 
-•	Month-to-month contract users
+•	Month-to-month contract users 
 
 3. Pricing Strategy
 •	Offer discounts for long-term contracts 
 •	Bundle services (internet + support) 
-•	Reduce entry pricing for new users
-
+•	Reduce entry pricing for new users 
 4. Customer Targeting Strategy
+
 Prioritize customers with:
 •	High SHAP churn probability 
 •	High monthly charges 
 •	Low tenure 
+________________________________________
 
-
-💰 8. ROI Analysis
+## 💰 8. ROI Analysis
 
 Assumptions:
 •	Retention cost = $50 
@@ -210,8 +209,9 @@ Random targeting:
 👉 Final Insight:
 Model provides ~6x better ROI than random selection.
 
-🧠 9. Tech Stack
+________________________________________
 
+## 🧠 9. Tech Stack
 •	Python 
 •	Pandas, NumPy 
 •	Scikit-learn 
@@ -219,8 +219,9 @@ Model provides ~6x better ROI than random selection.
 •	SHAP (Explainable AI) 
 •	Imbalanced-learn (SMOTE) 
 •	Jupyter Notebook 
+________________________________________
 
-🔀 10. Git Workflow
+## 🔀 10. Git Workflow
 
 Branch Strategy:
 •	feature/eda 
@@ -233,8 +234,9 @@ Commit Style:
 •	fix: bug fixes 
 •	docs: documentation 
 •	refactor: code improvements 
+________________________________________
 
-🏁 11. Final Outcome
+## 🏁 11. Final Outcome
 
 ✔ End-to-end ML pipeline
 ✔ Feature engineering + preprocessing
@@ -242,8 +244,10 @@ Commit Style:
 ✔ Explainable AI (SHAP + PDP)
 ✔ Business ROI justification
 ✔ Professional Git workflow
+________________________________________
 
-👨‍💻 Author
+## 👨‍💻 Author
+
 Keerthivasan V
 Machine Learning Project – Telecom Analytics
 
