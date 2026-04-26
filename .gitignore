@@ -4,5 +4,6 @@ __pycache__/
 artifacts/*
 !artifacts/scaler.pkl
 !artifacts/classification_results.csv
+!artifacts/regression_results.csv
 .env
 .DS_Store
