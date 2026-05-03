@@ -2,7 +2,14 @@ import shap
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
+# Create SHAP directory
+os.makedirs("../reports/SHAP", exist_ok=True)
+
+
+# Example save pattern for any future SHAP outputs
+plt.savefig("../reports/SHAP/{filename}.png", bbox_inches="tight")
 
 # ------------------------------------------------------------
 # Load model + data

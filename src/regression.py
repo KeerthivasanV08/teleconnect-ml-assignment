@@ -45,7 +45,7 @@ def prepare_regression_data(df):
         X_train, X_test, X_train_scaled, X_test_scaled, y_train, y_test
     """
     y = df["monthlycharges"]
-    X = df.drop(columns=["customerid", "monthlycharges"])
+    X = df.drop(columns=["customerid", "monthlycharges", "totalcharges"])
 
     categorical_cols = X.select_dtypes(include=["object"]).columns
 

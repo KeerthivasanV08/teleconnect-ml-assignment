@@ -242,13 +242,43 @@ def get_classification_models():
 # ============================================================
 # Feature Importance
 # ============================================================
-def get_feature_importance(model, feature_names):
+def get_feature_importance(model, feature_names, X_test=None, y_test=None):
     """
-    Return feature importance for tree-based models.
-    """
-    fi = pd.DataFrame({
-        "Feature": feature_names,
-        "Importance": model.feature_importances_
-    }).sort_values("Importance", ascending=False)
+    Robust feature importance for any classifier.
 
+    - Tree models: use `feature_importances_`
+    - Linear models: use absolute `coef_`
+    - Others (SVM/KNN): use permutation importance (requires X_test, y_test)
+    """
+    from sklearn.inspection import permutation_importance
+
+    # 1) Tree-based models
+    feat_imp = getattr(model, "feature_importances_", None)
+    if feat_imp is not None:
+        fi = pd.DataFrame({"Feature": list(feature_names), "Importance": feat_imp})
+        return fi.sort_values("Importance", ascending=False)
+
+    # 2) Linear models (LogisticRegression, linear SVC with coef_)
+    coef = getattr(model, "coef_", None)
+    if coef is not None:
+        # handle shapes (multi-class etc.)
+        coef_arr = np.asarray(coef)
+        if coef_arr.ndim > 1:
+            coef_arr = np.abs(coef_arr).mean(axis=0)
+        else:
+            coef_arr = np.abs(coef_arr).ravel()
+        fi = pd.DataFrame({"Feature": list(feature_names), "Importance": coef_arr})
+        return fi.sort_values("Importance", ascending=False)
+
+    # 3) Permutation importance fallback
+    if X_test is not None and y_test is not None:
+        perm = permutation_importance(model, X_test, y_test, n_repeats=10, random_state=42, n_jobs=-1)
+        fi = pd.DataFrame({"Feature": list(feature_names), "Importance": perm.importances_mean})
+        return fi.sort_values("Importance", ascending=False)
+
+    raise ValueError(
+        "Cannot compute feature importance for this model. "
+        "Provide X_test and y_test for permutation importance fallback."
+    )
+    
     return fi
