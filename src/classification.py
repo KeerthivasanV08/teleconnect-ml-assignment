@@ -250,57 +250,28 @@ def get_feature_importance(model, feature_names, X_test=None, y_test=None):
     - Tree-based models (DecisionTree, RandomForest): feature_importances_
     - Linear models (LogisticRegression, linear SVC): absolute coefficients
     - Other models (RBF SVM, KNN): permutation importance
-
-    Parameters
-    ----------
-    model : fitted estimator
-        Trained classification model.
-    feature_names : list-like
-        Feature column names.
-    X_test : array-like, optional
-        Test features (required for permutation importance fallback).
-    y_test : array-like, optional
-        Test target (required for permutation importance fallback).
-
-    Returns
-    -------
-    pd.DataFrame
-        DataFrame with Feature and Importance columns sorted descending.
     """
     import numpy as np
     import pandas as pd
     from sklearn.inspection import permutation_importance
 
-    # Ensure feature names are list-like
     feature_names = list(feature_names)
 
-    # --------------------------------------------------------
-    # 1) Tree-based models
-    # --------------------------------------------------------
     if hasattr(model, "feature_importances_"):
         importance = model.feature_importances_
 
-    # --------------------------------------------------------
-    # 2) Linear models
-    # --------------------------------------------------------
     elif hasattr(model, "coef_"):
         coef = np.asarray(model.coef_)
-
-        # Binary classification -> shape (1, n_features)
-        # Multi-class -> shape (n_classes, n_features)
         if coef.ndim > 1:
             importance = np.abs(coef).mean(axis=0)
         else:
             importance = np.abs(coef).ravel()
 
-    # --------------------------------------------------------
-    # 3) Permutation importance fallback
-    # --------------------------------------------------------
     else:
         if X_test is None or y_test is None:
             raise ValueError(
-                "X_test and y_test must be provided for permutation "
-                "importance when model has no built-in feature importance."
+                "X_test and y_test must be provided for permutation importance "
+                "when model has no built-in feature importance."
             )
 
         perm = permutation_importance(
@@ -314,9 +285,6 @@ def get_feature_importance(model, feature_names, X_test=None, y_test=None):
         )
         importance = perm.importances_mean
 
-    # --------------------------------------------------------
-    # Build feature importance table
-    # --------------------------------------------------------
     fi = pd.DataFrame({
         "Feature": feature_names,
         "Importance": importance
