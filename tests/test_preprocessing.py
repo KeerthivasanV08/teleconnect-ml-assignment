@@ -80,3 +80,34 @@ class TestPreprocessing:
             for val, count in value_counts.items():
                 pct = count / len(df)
                 assert pct < 0.99, f"Class '{val}' is {pct*100:.1f}% - possibly imbalanced preprocessing"
+
+        def test_preprocess_telco_data_pipeline(self):
+            "Test full preprocessing pipeline function."
+            df = pd.DataFrame({
+            "customerid": ["0001", "0002"],
+            "gender": ["Male", "Female"],
+            "tenure": [10, 20],
+            "monthlycharges": [50.0, 80.0],
+            "totalcharges": [500.0, 1600.0],
+            "phoneservice": ["Yes", "No"],
+            "multiplelines": ["No", "Yes"],
+            "onlinesecurity": ["Yes", "No"],
+            "onlinebackup": ["No", "Yes"],
+            "deviceprotection": ["Yes", "No"],
+            "techsupport": ["No", "Yes"],
+            "streamingtv": ["Yes", "No"],
+            "streamingmovies": ["No", "Yes"],
+            "contract": ["Month-to-month", "Two year"],
+            "churn": ["Yes", "No"]
+        })
+
+        processed_df, scaler = preprocess_telco_data(df)
+
+        assert processed_df.shape[0] == 2
+        assert "customerid" not in processed_df.columns
+        assert "avgmonthlyspend" in processed_df.columns
+        assert "servicecount" in processed_df.columns
+        assert "remaining_contract_months" in processed_df.columns
+        assert "contractvalue" in processed_df.columns
+        assert "churn" in processed_df.columns
+        assert scaler is not None            
